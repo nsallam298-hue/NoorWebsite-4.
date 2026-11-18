@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة نور محمد سيد التعليمية</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #faf7ff;
+    color: #35264b;
+    line-height: 1.8;
+}
+
+header {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 15px #ddd2ee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: #7952a8;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #49345f;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #bd78ad;
+}
+
+.hero {
+    padding: 85px 8%;
+    text-align: center;
+    background: linear-gradient(135deg, #e9dcff, #ffe5f1);
+}
+
+.hero h1 {
+    font-size: 38px;
+    color: #67428e;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.main-btn {
+    display: inline-block;
+    background: #8055ac;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.main-btn:hover {
+    background: #bd78ad;
+}
+
+section {
+    padding: 55px 8%;
+}
+
+.section-title {
+    text-align: center;
+    color: #7952a8;
+    font-size: 29px;
+    margin-bottom: 30px;
+}
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px #e7dcef;
+    transition: 0.3s;
+}
+
+.subject-card:hover {
+    transform: translateY(-6px);
+}
+
+.subject-card h3 {
+    color: #7952a8;
+    margin: 10px 0;
+}
+
+.subject-icon {
+    font-size: 40px;
+}
+
+.lesson-section {
+    background: #f1eaff;
+}
+
+.lesson-group {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px #e3d8ed;
+}
+
+.lesson-group h3 {
+    color: #8055ac;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.lesson-card {
+    border: 1px solid #eadff4;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    background: #fdfbff;
+}
+
+.lesson-card h4 {
+    color: #704895;
+    margin-bottom: 8px;
+}
+
+.lesson-card button {
+    background: #8055ac;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.lesson-card button:hover {
+    background: #bd78ad;
+}
+
+.lesson-content {
+    display: none;
+    margin-top: 15px;
+    padding: 18px;
+    background: #f3edff;
+    border-radius: 12px;
+}
+
+.lesson-content h5 {
+    color: #704895;
+    font-size: 17px;
+    margin-top: 12px;
+}
+
+.lesson-content ul {
+    padding-right: 25px;
+}
+
+.example {
+    background: #fff0f7;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 12px 0;
+}
+
+.quiz-section {
+    background: white;
+}
+
+.quiz-box {
+    max-width: 650px;
+    margin: auto;
+    background: #f5efff;
+    padding: 25px;
+    border-radius: 18px;
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.quiz-question label {
+    display: block;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.quiz-box button {
+    background: #8055ac;
+    color: white;
+    padding: 11px 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#quiz-result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.about {
+    text-align: center;
+    background: #f1eaff;
+}
+
+.about p {
+    max-width: 750px;
+    margin: auto;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact input,
+.contact textarea {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 12px auto;
+    padding: 13px;
+    border: 1px solid #d9c9e8;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.contact textarea {
+    height: 110px;
+}
+
+footer {
+    background: #684487;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    section {
+        padding: 40px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">نور محمد سيد</div>
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#subjects">المواد</a>
+        <a href="#lessons">الدروس</a>
+        <a href="#quiz">الاختبارات</a>
+        <a href="#about">عن الموقع</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h1>مرحباً بك في منصة نور محمد سيد التعليمية</h1>
+    <p>رحلتك نحو التعلم والمعرفة تبدأ من هنا</p>
+    <p>تعلم بسهولة، واكتشف معلومات جديدة، وطوّر مهاراتك كل يوم.</p>
+    <a href="#subjects" class="main-btn">ابدأ التعلم الآن</a>
+</div>
+
+<section id="subjects">
+    <h2 class="section-title">المواد التعليمية</h2>
+
+    <div class="subjects">
+        <div class="subject-card">
+            <div class="subject-icon">📚</div>
+            <h3>اللغة العربية</h3>
+            <p>تعلم القواعد والقراءة والكتابة.</p>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">🌍</div>
+            <h3>اللغة الإنجليزية</h3>
+            <p>تعلم الكلمات والقواعد الأساسية.</p>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">🔢</div>
+            <h3>الرياضيات</h3>
+            <p>تعرف على الأعداد والعمليات الحسابية.</p>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">🔬</div>
+            <h3>العلوم</h3>
+            <p>اكتشف الطبيعة وجسم الإنسان والنباتات.</p>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-icon">💻</div>
+            <h3>التكنولوجيا والحاسب</h3>
+            <p>تعلم أساسيات الحاسب والإنترنت.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lesson-section" id="lessons">
+    <h2 class="section-title">الدروس التعليمية</h2>
+
+    <div class="lesson-group">
+        <h3>📚 أولاً: اللغة العربية</h3>
+
+        <div class="lesson-card">
+            <h4>الدرس الأول: أقسام الكلام</h4>
+            <p>نتعرف على أنواع الكلمات في اللغة العربية.</p>
+            <button onclick="toggleLesson('ar1')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ar1">
+                <h5>ما أقسام الكلام؟</h5>
+                <p>ينقسم الكلام في اللغة العربية إلى ثلاثة أقسام أساسية:</p>
+                <ul>
+                    <li><b>الاسم:</b> كلمة تدل على إنسان أو حيوان أو نبات أو جماد أو معنى، مثل: طالب، أسد، شجرة.</li>
+                    <li><b>الفعل:</b> كلمة تدل على حدوث شيء في زمن معين، مثل: كتب، يكتب، اكتب.</li>
+                    <li><b>الحرف:</b> كلمة لا يظهر معناها كاملًا إلا مع غيرها، مثل: من، إلى، في.</li>
+                </ul>
+                <div class="example">مثال: ذهب الطالب إلى المدرسة. ذهب: فعل، الطالب: اسم، إلى: حرف.</div>
+                <h5>تدريب</h5>
+                <p>ما نوع كلمة "المدرسة"؟</p>
+                <p>الإجابة: اسم.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثاني: الجملة الاسمية والجملة الفعلية</h4>
+            <p>نتعلم الفرق بين نوعي الجمل في اللغة العربية.</p>
+            <button onclick="toggleLesson('ar2')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ar2">
+                <h5>الجملة الاسمية</h5>
+                <p>هي الجملة التي تبدأ باسم، وتتكون غالبًا من مبتدأ وخبر.</p>
+                <div class="example">مثال: الشمس مشرقة. الشمس: مبتدأ، مشرقة: خبر.</div>
+                <h5>الجملة الفعلية</h5>
+                <p>هي الجملة التي تبدأ بفعل، وتتكون غالبًا من فعل وفاعل.</p>
+                <div class="example">مثال: يذاكر الطالب. يذاكر: فعل، الطالب: فاعل.</div>
+                <h5>تدريب</h5>
+                <p>حدد نوع الجملة: "الحديقة جميلة".</p>
+                <p>الإجابة: جملة اسمية.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثالث: علامات الترقيم</h4>
+            <p>نتعرف على العلامات التي تساعدنا على تنظيم الكتابة.</p>
+            <button onclick="toggleLesson('ar3')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ar3">
+                <h5>أهم علامات الترقيم</h5>
+                <ul>
+                    <li><b>النقطة (.)</b> توضع في نهاية الجملة التامة.</li>
+                    <li><b>الفاصلة (،)</b> تفصل بين الجمل القصيرة.</li>
+                    <li><b>علامة الاستفهام (؟)</b> توضع بعد السؤال.</li>
+                    <li><b>علامة التعجب (!)</b> تستخدم للتعبير عن الدهشة أو التعجب.</li>
+                    <li><b>النقطتان الرأسيتان (:)</b> تستخدمان قبل التوضيح أو التفصيل.</li>
+                </ul>
+                <div class="example">مثال: ما أجمل الطبيعة! أين تسكن؟</div>
+                <h5>تدريب</h5>
+                <p>ما العلامة التي توضع في نهاية السؤال؟</p>
+                <p>الإجابة: علامة الاستفهام (؟).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-group">
+        <h3>🌍 ثانياً: اللغة الإنجليزية</h3>
+
+        <div class="lesson-card">
+            <h4>الدرس الأول: Greetings – التحيات</h4>
+            <p>نتعلم أشهر التحيات المستخدمة في اللغة الإنجليزية.</p>
+            <button onclick="toggleLesson('en1')">اقرأ الدرس</button>
+            <div class="lesson-content" id="en1">
+                <h5>أهم التحيات</h5>
+                <ul>
+                    <li>Hello = مرحباً.</li>
+                    <li>Good morning = صباح الخير.</li>
+                    <li>Good evening = مساء الخير.</li>
+                    <li>Goodbye = إلى اللقاء.</li>
+                    <li>How are you? = كيف حالك؟</li>
+                    <li>Thank you = شكراً لك.</li>
+                </ul>
+                <div class="example">A: Hello! How are you?<br>B: I am fine, thank you.</div>
+                <h5>تدريب</h5>
+                <p>ما معنى Good morning؟</p>
+                <p>الإجابة: صباح الخير.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثاني: Pronouns – الضمائر</h4>
+            <p>نتعرف على الضمائر الشخصية في اللغة الإنجليزية.</p>
+            <button onclick="toggleLesson('en2')">اقرأ الدرس</button>
+            <div class="lesson-content" id="en2">
+                <h5>الضمائر الشخصية</h5>
+                <ul>
+                    <li>I = أنا.</li>
+                    <li>You = أنت أو أنتم.</li>
+                    <li>He = هو.</li>
+                    <li>She = هي.</li>
+                    <li>It = لغير العاقل.</li>
+                    <li>We = نحن.</li>
+                    <li>They = هم.</li>
+                </ul>
+                <div class="example">I am a student. = أنا طالب.<br>She is happy. = هي سعيدة.</div>
+                <h5>تدريب</h5>
+                <p>ما الضمير المناسب للتعبير عن "هي"؟</p>
+                <p>الإجابة: She.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثالث: Verb to be</h4>
+            <p>نتعلم استخدام am و is و are.</p>
+            <button onclick="toggleLesson('en3')">اقرأ الدرس</button>
+            <div class="lesson-content" id="en3">
+                <h5>ما هو Verb to be؟</h5>
+                <p>هو فعل الكينونة ويستخدم للتعبير عن الحالة أو الصفة أو التعريف.</p>
+                <ul>
+                    <li>I am.</li>
+                    <li>He / She / It is.</li>
+                    <li>You / We / They are.</li>
+                </ul>
+                <div class="example">I am happy.<br>He is a teacher.<br>They are friends.</div>
+                <h5>تدريب</h5>
+                <p>أكمل: She ___ a student.</p>
+                <p>الإجابة: is.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-group">
+        <h3>🔢 ثالثاً: الرياضيات</h3>
+
+        <div class="lesson-card">
+            <h4>الدرس الأول: العمليات الحسابية الأساسية</h4>
+            <p>نتعرف على العمليات الحسابية الأربع.</p>
+            <button onclick="toggleLesson('ma1')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ma1">
+                <h5>العمليات الأساسية</h5>
+                <ul>
+                    <li><b>الجمع (+):</b> إضافة عدد إلى عدد آخر.</li>
+                    <li><b>الطرح (-):</b> إيجاد الفرق بين عددين.</li>
+                    <li><b>الضرب (×):</b> جمع متكرر.</li>
+                    <li><b>القسمة (÷):</b> توزيع العدد إلى مجموعات متساوية.</li>
+                </ul>
+                <div class="example">
+                    5 + 3 = 8<br>
+                    9 - 4 = 5<br>
+                    3 × 2 = 6<br>
+                    8 ÷ 2 = 4
+                </div>
+                <h5>تدريب</h5>
+                <p>احسب: 6 + 4 = ؟</p>
+                <p>الإجابة: 10.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثاني: الكسور</h4>
+            <p>نتعرف على مفهوم الكسر وأجزائه.</p>
+            <button onclick="toggleLesson('ma2')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ma2">
+                <h5>ما هو الكسر؟</h5>
+                <p>الكسر يمثل جزءًا من كل، ويتكون من بسط ومقام.</p>
+                <ul>
+                    <li><b>البسط:</b> العدد الموجود أعلى خط الكسر.</li>
+                    <li><b>المقام:</b> العدد الموجود أسفل خط الكسر.</li>
+                </ul>
+                <div class="example">في الكسر ½: البسط 1 والمقام 2، أي جزء واحد من جزأين متساويين.</div>
+                <h5>تدريب</h5>
+                <p>ما بسط الكسر ¾؟</p>
+                <p>الإجابة: 3.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثالث: الأشكال الهندسية</h4>
+            <p>نتعرف على مجموعة من الأشكال الهندسية.</p>
+            <button onclick="toggleLesson('ma3')">اقرأ الدرس</button>
+            <div class="lesson-content" id="ma3">
+                <h5>أهم الأشكال الهندسية</h5>
+                <ul>
+                    <li><b>المربع:</b> أربعة أضلاع متساوية وأربع زوايا قائمة.</li>
+                    <li><b>المستطيل:</b> أربعة أضلاع، وكل ضلعين متقابلين متساويان.</li>
+                    <li><b>المثلث:</b> ثلاثة أضلاع وثلاث زوايا.</li>
+                    <li><b>الدائرة:</b> شكل مستدير ليس له أضلاع أو زوايا.</li>
+                </ul>
+                <div class="example">نرى المربع في بعض النوافذ، والدائرة في شكل الساعة.</div>
+                <h5>تدريب</h5>
+                <p>كم عدد أضلاع المثلث؟</p>
+                <p>الإجابة: ثلاثة أضلاع.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-group">
+        <h3>🔬 رابعاً: العلوم</h3>
+
+        <div class="lesson-card">
+            <h4>الدرس الأول: حالات المادة</h4>
+            <p>نتعرف على الحالات الثلاث للمادة.</p>
+            <button onclick="toggleLesson('sc1')">اقرأ الدرس</button>
+            <div class="lesson-content" id="sc1">
+                <h5>حالات المادة</h5>
+                <ul>
+                    <li><b>الحالة الصلبة:</b> لها شكل وحجم ثابتان، مثل الثلج والحجر.</li>
+                    <li><b>الحالة السائلة:</b> لها حجم ثابت وتأخذ شكل الإناء، مثل الماء.</li>
+                    <li><b>الحالة الغازية:</b> ليس لها شكل أو حجم ثابت، مثل بخار الماء والهواء.</li>
+                </ul>
+                <div class="example">عند تسخين الثلج يتحول إلى ماء، وعند استمرار التسخين يتحول الماء إلى بخار.</div>
+                <h5>تدريب</h5>
+                <p>ما حالة الماء داخل الكوب؟</p>
+                <p>الإجابة: الحالة السائلة.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثاني: أجزاء النبات</h4>
+            <p>نتعرف على أجزاء النبات ووظيفة كل جزء.</p>
+            <button onclick="toggleLesson('sc2')">اقرأ الدرس</button>
+            <div class="lesson-content" id="sc2">
+                <h5>أجزاء النبات الرئيسية</h5>
+                <ul>
+                    <li><b>الجذر:</b> يمتص الماء والأملاح من التربة.</li>
+                    <li><b>الساق:</b> يدعم النبات وينقل الماء والغذاء.</li>
+                    <li><b>الأوراق:</b> تساعد النبات على صنع الغذاء.</li>
+                    <li><b>الزهرة:</b> تساعد في عملية التكاثر.</li>
+                    <li><b>الثمرة:</b> تحتوي غالبًا على البذور.</li>
+                </ul>
+                <div class="example">يحتاج النبات إلى الماء والهواء والضوء لينمو بصورة جيدة.</div>
+                <h5>تدريب</h5>
+                <p>ما الجزء الذي يمتص الماء من التربة؟</p>
+                <p>الإجابة: الجذر.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثالث: الجهاز الهضمي</h4>
+            <p>نتعرف على رحلة الطعام داخل جسم الإنسان.</p>
+            <button onclick="toggleLesson('sc3')">اقرأ الدرس</button>
+            <div class="lesson-content" id="sc3">
+                <h5>وظيفة الجهاز الهضمي</h5>
+                <p>يقوم الجهاز الهضمي بتكسير الطعام وتحويله إلى مواد غذائية يستطيع الجسم امتصاصها والاستفادة منها.</p>
+                <h5>أهم أجزائه</h5>
+                <ul>
+                    <li><b>الفم:</b> يبدأ فيه مضغ الطعام وخلطه باللعاب.</li>
+                    <li><b>المريء:</b> ينقل الطعام إلى المعدة.</li>
+                    <li><b>المعدة:</b> تخلط الطعام بالعصارات الهضمية.</li>
+                    <li><b>الأمعاء الدقيقة:</b> يتم فيها معظم امتصاص المواد الغذائية.</li>
+                    <li><b>الأمعاء الغليظة:</b> تمتص الماء وتساعد في تكوين الفضلات.</li>
+                </ul>
+                <div class="example">يساعد الجهاز الهضمي الجسم في الحصول على الطاقة والعناصر الغذائية.</div>
+                <h5>تدريب</h5>
+                <p>أين يبدأ هضم الطعام؟</p>
+                <p>الإجابة: في الفم.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson-group">
+        <h3>💻 خامساً: التكنولوجيا والحاسب الآلي</h3>
+
+        <div class="lesson-card">
+            <h4>الدرس الأول: مكونات الحاسب الآلي</h4>
+            <p>نتعرف على المكونات الأساسية لجهاز الكمبيوتر.</p>
+            <button onclick="toggleLesson('te1')">اقرأ الدرس</button>
+            <div class="lesson-content" id="te1">
+                <h5>المكونات الأساسية</h5>
+                <ul>
+                    <li><b>الشاشة:</b> تعرض المعلومات والصور.</li>
+                    <li><b>لوحة المفاتيح:</b> تستخدم لإدخال النصوص والأرقام.</li>
+                    <li><b>الفأرة:</b> تستخدم للتحكم في المؤشر واختيار العناصر.</li>
+                    <li><b>وحدة النظام:</b> تحتوي على المكونات الداخلية الأساسية للحاسب.</li>
+                </ul>
+                <div class="example">يمكن استخدام الحاسب في الدراسة والبحث والكتابة والتصميم.</div>
+                <h5>تدريب</h5>
+                <p>ما الأداة المستخدمة لكتابة النصوص؟</p>
+                <p>الإجابة: لوحة المفاتيح.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثاني: الإنترنت</h4>
+            <p>نتعرف على مفهوم الإنترنت واستخداماته.</p>
+            <button onclick="toggleLesson('te2')">اقرأ الدرس</button>
+            <div class="lesson-content" id="te2">
+                <h5>ما هو الإنترنت؟</h5>
+                <p>الإنترنت شبكة عالمية تربط ملايين الأجهزة وتتيح تبادل المعلومات والتواصل بينها.</p>
+                <h5>استخدامات الإنترنت</h5>
+                <ul>
+                    <li>التعلم عن بعد.</li>
+                    <li>البحث عن المعلومات.</li>
+                    <li>التواصل مع الآخرين.</li>
+                    <li>مشاهدة الفيديوهات التعليمية.</li>
+                    <li>إرسال واستقبال الرسائل.</li>
+                </ul>
+                <div class="example">يمكن للطالب استخدام الإنترنت للوصول إلى الكتب والدروس التعليمية.</div>
+                <h5>تدريب</h5>
+                <p>اذكر استخدامًا واحدًا للإنترنت في التعليم.</p>
+                <p>الإجابة: البحث عن المعلومات أو مشاهدة الدروس التعليمية.</p>
+            </div>
+        </div>
+
+        <div class="lesson-card">
+            <h4>الدرس الثالث: الأمان الرقمي</h4>
+            <p>نتعلم كيف نحافظ على أماننا أثناء استخدام الإنترنت.</p>
+            <button onclick="toggleLesson('te3')">اقرأ الدرس</button>
+            <div class="lesson-content" id="te3">
+                <h5>قواعد الأمان الرقمي</h5>
+                <ul>
+                    <li>استخدام كلمات مرور قوية.</li>
+                    <li>عدم مشاركة البيانات الشخصية مع أشخاص مجهولين.</li>
+                    <li>عدم فتح الروابط مجهولة المصدر.</li>
+                    <li>تجنب تحميل الملفات من مواقع غير موثوقة.</li>
+                    <li>إخبار شخص موثوق عند التعرض لمشكلة عبر الإنترنت.</li>
+                </ul>
+                <div class="example">كلمة المرور القوية تساعد على حماية الحسابات من الوصول غير المصرح به.</div>
+                <h5>تدريب</h5>
+                <p>هل يجب مشاركة كلمة المرور مع الآخرين؟</p>
+                <p>الإجابة: لا.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quiz-section" id="quiz">
+    <h2 class="section-title">اختبر معلوماتك</h2>
+
+    <div class="quiz-box">
+        <h3>اختبار تعليمي سريع</h3>
+        <p>اختر الإجابة الصحيحة لكل سؤال:</p>
+
+        <form id="quizForm">
+
+            <div class="quiz-question">
+                <p>1- ما أقسام الكلام في اللغة العربية؟</p>
+                <label><input type="radio" name="q1" value="a"> اسم وفعل وحرف</label>
+                <label><input type="radio" name="q1" value="b"> مبتدأ وخبر فقط</label>
+                <label><input type="radio" name="q1" value="c"> فعل وفاعل فقط</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2- ما معنى كلمة Hello؟</p>
+                <label><input type="radio" name="q2" value="a"> شكراً</label>
+                <label><input type="radio" name="q2" value="b"> مرحباً</label>
+                <label><input type="radio" name="q2" value="c"> إلى اللقاء</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3- كم عدد أضلاع المثلث؟</p>
+                <label><input type="radio" name="q3" value="a"> أربعة</label>
+                <label><input type="radio" name="q3" value="b"> خمسة</label>
+                <label><input type="radio" name="q3" value="c"> ثلاثة</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>4- ما الجزء الذي يمتص الماء من التربة؟</p>
+                <label><input type="radio" name="q4" value="a"> الجذر</label>
+                <label><input type="radio" name="q4" value="b"> الورقة</label>
+                <label><input type="radio" name="q4" value="c"> الزهرة</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>5- ما الأداة المستخدمة لإدخال النصوص إلى الحاسب؟</p>
+                <label><input type="radio" name="q5" value="a"> الشاشة</label>
+                <label><input type="radio" name="q5" value="b"> لوحة المفاتيح</label>
+                <label><input type="radio" name="q5" value="c"> السماعة</label>
+            </div>
+
+            <button type="button" onclick="checkQuiz()">عرض النتيجة</button>
+        </form>
+
+        <p id="quiz-result"></p>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2 class="section-title">عن المنصة</h2>
+    <p>
+        منصة نور محمد سيد التعليمية هي منصة تهدف إلى تقديم محتوى تعليمي
+        مبسط ومتنوع في عدد من المواد الدراسية، وتساعد الطلاب على اكتساب
+        المعلومات والمهارات من خلال الدروس والأمثلة والاختبارات التفاعلية.
+    </p>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="section-title">تواصل معنا</h2>
+    <p>يسعدنا استقبال استفساراتكم وملاحظاتكم.</p>
+
+    <form onsubmit="sendMessage(event)">
+        <input type="text" placeholder="الاسم" required>
+        <input type="email" placeholder="البريد الإلكتروني" required>
+        <textarea placeholder="اكتب رسالتك هنا" required></textarea>
+        <button type="submit" class="main-btn">إرسال الرسالة</button>
+    </form>
+    <p id="contact-result"></p>
+</section>
+
+<footer>
+    <p>جميع الحقوق محفوظة © 2026 منصة نور محمد سيد التعليمية</p>
+    <p>التعلم طريق النجاح والتميز</p>
+</footer>
+
+<script>
+function toggleLesson(id) {
+    const lesson = document.getElementById(id);
+
+    if (lesson.style.display === "block") {
+        lesson.style.display = "none";
+    } else {
+        lesson.style.display = "block";
+    }
+}
+
+function checkQuiz() {
+    const answers = {
+        q1: "a",
+        q2: "b",
+        q3: "c",
+        q4: "a",
+        q5: "b"
+    };
+
+    let score = 0;
+    let total = Object.keys(answers).length;
+
+    for (let question in answers) {
+        const selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+
+        if (selected && selected.value === answers[question]) {
+            score++;
+        }
+    }
+
+    document.getElementById("quiz-result").textContent =
+        "درجتك: " + score + " من " + total +
+        (score === total ? " - ممتاز! أحسنت." : " - استمر في التعلم والمحاولة.");
+}
+
+function sendMessage(event) {
+    event.preventDefault();
+
+    document.getElementById("contact-result").textContent =
+        "شكراً لك! تم تسجيل رسالتك في النموذج التجريبي.";
+
+    event.target.reset();
+}
+</script>
+
+</body>
+</html>
